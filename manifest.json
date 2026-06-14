@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Slide Assist",
+  "version": "1.0.1",
+  "description": "Your Grammarly for presentations. Analyzes Canva and Google Slides to suggest layout edits, copy enhancements, and data charts.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://*.canva.com/*",
+    "https://docs.google.com/presentation/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.canva.com/*",
+        "https://docs.google.com/presentation/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open Slide Assist",
+    "default_icon": "icons/icon48.png"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
